@@ -1,0 +1,36 @@
+<meta charset="UTF-8">
+<h1>PROGRAMA CALCULAR IMC</h1>
+<script>
+    function saltarlinea(){
+        document.write("<br>");
+        document.write("<br>");
+        document.write("<br>");
+    }
+    function imprimir(frase){
+        document.write(frase);
+        saltarlinea();
+    }
+    function calcularIMC(peso,altura){
+        return(peso/(altura*altura));
+    }
+    nombre = prompt("Indique su nombre");
+    peso_usuario = prompt(nombre + ", Indique su peso en Kg");
+    altura_usuario = prompt(nombre + ", Indique su altura en Mts");
+
+    imc_usuario = calcularIMC(peso_usuario,altura_usuario);
+
+    imprimir(nombre + ", su IMC es: " + imc_usuario);
+
+    if(imc_usuario<=18.5){
+        imprimir("Usted se encuentra en Insuficiencia Ponderal");
+    }
+    if(imc_usuario>18.5 && imc_usuario<=24.9){
+        imprimir("Usted se encuentra en Intervalo Normal");
+    }
+    if(imc_usuario>25 && imc_usuario<=29.9){
+        imprimir("Usted se encuentra en Sobrepeso");
+    }
+    if(imc_usuario>30){
+        imprimir("Usted se encuentra en estado de obesidad");
+    }
+</script>
