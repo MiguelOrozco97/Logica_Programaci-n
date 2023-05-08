@@ -1,0 +1,33 @@
+<meta charset="UTF-8">
+<canvas width="600" height="400"></canvas>
+<script>
+
+    var cant_cuadrados = prompt("Indique cuantos cuadrados desea");  
+    var contador=1; 
+    
+
+    while(contador<=cant_cuadrados) {
+    var pos_x = prompt("Indique posición de x deseada del cuadrado numero " + contador);
+    var pos_y = prompt("Indique posición de y deseada del cuadrado numero " + contador);
+    var color = prompt("Indique color ");
+    
+
+    function dibujarCuadrado(pos_x,pos_y, color){
+        var pantalla = document.querySelector('canvas');
+        var pincel = pantalla.getContext('2d');
+        pincel.fillStyle = color;
+        pincel.fillRect(pos_x,pos_y,50,50); 
+        pincel.strokeStyle = "black";
+        pincel.strokeRect(pos_x,pos_y,50,50);
+    }
+        contador++;
+        dibujarCuadrado(pos_x,pos_y);
+    }
+
+    
+    
+    
+
+
+
+</script>
