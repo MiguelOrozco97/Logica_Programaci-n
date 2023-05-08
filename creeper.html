@@ -1,0 +1,24 @@
+<canvas width="600" height="600"></canvas>
+<script>
+    var pantalla = document.querySelector('canvas');
+    var pincel = pantalla.getContext('2d');
+
+    pincel.fillStyle = "green";
+    pincel.fillRect(0,0,350,350);   //cabeza del zombie
+
+    pincel.fillStyle = "black";
+    pincel.fillRect(50,50,90,90);  //ojo izquierdo del  zombie
+
+    pincel.fillStyle = "black";
+    pincel.fillRect(210,50,90,90);  //ojo derecho del zombie
+
+    pincel.fillStyle = "black";
+    pincel.fillRect(140,140,70,100);  //nariz
+
+    pincel.fillStyle = "black";
+    pincel.fillRect(100,190,40,110);  //parte de la boca izquierda
+
+    pincel.fillStyle = "black";
+    pincel.fillRect(200,190,40,110);   //parte de la boca derecha
+
+</script>
