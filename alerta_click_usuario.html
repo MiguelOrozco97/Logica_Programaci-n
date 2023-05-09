@@ -7,9 +7,23 @@
   pincel.fillStyle = "grey";
   pincel.fillRect(0, 0, 600, 400);
 
-  function exhibirAlerta(){
-    alert("Usted hizo un click");
-
-    
+  function exhibirAlerta(evento){
+    var x = evento.pageX - pantalla.offsetLeft;
+    var y = evento.pageY - pantalla.offsetTop;
+    console.log(evento);
+    alert(x + "," + y);
   }
+
+  function dibujarCirculo(evento){
+    var x = evento.pageX - pantalla.offsetLeft;
+    var y = evento.pageY - pantalla.offsetTop;
+
+    pincel.fillStyle = "red";
+    pincel.beginPath();
+    pincel.arc(x,y,10,0,2*3.14);
+    pincel.fill();
+    console.log(x + "," + y);
+  }
+
+  pantalla.onclick = dibujarCirculo;
 </script>
