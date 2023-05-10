@@ -1,0 +1,54 @@
+<canvas width="600" height="400"> </canvas>
+<script>
+  /*
+    En este codigo se animará el movimiento en 2 dimensiones de una bolita a lo largo de una pantalla, para esto
+    usaremos la funcion setInterval y una funciones "limpiar" que creamos para que la bolita parezca que se mueve
+    */
+
+  var pantalla = document.querySelector("canvas");
+  var pincel = pantalla.getContext("2d");
+  pincel.fillStyle = "grey";
+  pincel.fillRect(0, 0, 600, 400);
+  var radio = 10;
+
+  function disenhar_circunferencia(x, y, radio, color) {
+    pincel.fillStyle = color;
+    pincel.beginPath();
+    pincel.arc(x, y, radio, 0, 2 * Math.PI);
+    pincel.fill();
+  }
+
+  function limpiarPantalla() {
+    pincel.clearRect(0, 0, 600, 400);
+  }
+
+  var x = 0;
+  var direccion = 1;
+
+  function actualizarPantalla() {
+    limpiarPantalla();
+    if (x >= 590) {
+      // si la bolita llega al borde derecho de la pantalla, cambia la dirección a izquierda
+      direccion = -1;
+    } else if (x <= 10) {
+      // si la bolita llega al borde izquierdo de la pantalla, cambia la dirección a derecha
+      direccion = 1;
+    }
+
+    disenhar_circunferencia(x, 20, 10);
+    x = x + direccion;
+  }
+
+  function disenharObjetivo(x, y) {
+    disenhar_circunferencia(x, y, radio + 20, "red");
+    disenhar_circunferencia(x, y, radio + 10, "white");
+    disenhar_circunferencia(x, y, radio, "red");
+  }
+
+  function sortearPosicion(maximo) {
+    return Math.floor(Math.random() * maximo);
+  }
+  xAleatorio = sortearPosicion(600);
+  yAleatorio = sortearPosicion(400);
+  disenharObjetivo(xAleatorio, yAleatorio);
+</script>
