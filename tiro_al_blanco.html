@@ -10,6 +10,8 @@
   pincel.fillStyle = "grey";
   pincel.fillRect(0, 0, 600, 400);
   var radio = 10;
+  var xAleatorio;
+  var yAleatorio;
 
   function disenhar_circunferencia(x, y, radio, color) {
     pincel.fillStyle = color;
@@ -25,20 +27,6 @@
   var x = 0;
   var direccion = 1;
 
-  function actualizarPantalla() {
-    limpiarPantalla();
-    if (x >= 590) {
-      // si la bolita llega al borde derecho de la pantalla, cambia la dirección a izquierda
-      direccion = -1;
-    } else if (x <= 10) {
-      // si la bolita llega al borde izquierdo de la pantalla, cambia la dirección a derecha
-      direccion = 1;
-    }
-
-    disenhar_circunferencia(x, 20, 10);
-    x = x + direccion;
-  }
-
   function disenharObjetivo(x, y) {
     disenhar_circunferencia(x, y, radio + 20, "red");
     disenhar_circunferencia(x, y, radio + 10, "white");
@@ -48,7 +36,28 @@
   function sortearPosicion(maximo) {
     return Math.floor(Math.random() * maximo);
   }
-  xAleatorio = sortearPosicion(600);
-  yAleatorio = sortearPosicion(400);
-  disenharObjetivo(xAleatorio, yAleatorio);
+
+  function actualizarPantalla() {
+    limpiarPantalla();
+    xAleatorio = sortearPosicion(600);
+    yAleatorio = sortearPosicion(400);
+    disenharObjetivo(xAleatorio, yAleatorio);
+  }
+
+  setInterval(actualizarPantalla, 500);
+
+  function disparar(evento){
+    var x = evento.pageX - pantalla.offsetLeft;
+    var y = evento.pageY - pantalla.offsetTop;
+
+    if((x < xAleatorio + radio) &&
+       (x > xAleatorio - radio) &&
+       (y < yAleatorio + radio) &&
+       (y > yAleatorio - radio) ){
+          alert("Tiro certero");
+       }
+  }
+
+  pantalla.onclick = disparar;
+
 </script>
